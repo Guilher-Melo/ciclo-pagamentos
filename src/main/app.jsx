@@ -5,6 +5,7 @@ import Header from '../common/templates/header';
 import SideBar from '../common/templates/sidebar';
 import Footer from '../common/templates/footer';
 import Routes from './routes';
+import Messages from '../common/msg/messages';
 
 export default function App(props) {
   return(
@@ -15,6 +16,7 @@ export default function App(props) {
         <Routes />
       </div>
       <Footer />
+      <Messages />
     </div>
   )
 }
