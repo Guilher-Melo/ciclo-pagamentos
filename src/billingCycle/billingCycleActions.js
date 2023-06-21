@@ -24,6 +24,18 @@ export function showUpdate(billingCycle) {
     initialize('billingCycleForm', billingCycle)
   ]
 }
+// Refatorar para transforma em apenas uma função
+export function showDelete(billingCycle) {
+  return [
+    showTabs('tabDelete'),
+    selectTab('tabDelete'),
+    initialize('billingCycleForm', billingCycle)
+  ]
+}
+
+export function remove(values) {
+  return submit(values, 'delete');
+}
 
 export function update(values) {
   return submit(values, 'put');
