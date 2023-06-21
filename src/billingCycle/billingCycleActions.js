@@ -14,16 +14,7 @@ export function getList() {
 }
 
 export function create(values) {
-  return dispatch => {
-    axios.post(`${BASE_URL}/billingCycles`, values)
-    .then(resp => {
-      toastr.success('Sucesso', 'Operação realizada com sucesso.')
-      dispatch(init())
-    })
-    .catch(e => {
-      e.response.data.errors.forEach(error => toastr.error('Erro', error))
-    })
-  }
+  return submit(values, 'post');
 }
 
 export function showUpdate(billingCycle) {
@@ -32,6 +23,24 @@ export function showUpdate(billingCycle) {
     selectTab('tabUpdate'),
     initialize('billingCycleForm', billingCycle)
   ]
+}
+
+export function update(values) {
+  return submit(values, 'put');
+}
+
+function submit(values, method) {
+  return dispatch => {
+    const id = values._id ? values._id : ''
+    axios[method](`${BASE_URL}/billingCycles/${id}`, values)
+    .then(resp => {
+      toastr.success('Sucesso', 'Operação realizada com sucesso.')
+      dispatch(init())
+    })
+    .catch(e => {
+      e.response.data.errors.forEach(error => toastr.error('Erro', error))
+    })
+  }
 }
 
 export function init() {
