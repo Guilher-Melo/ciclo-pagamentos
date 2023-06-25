@@ -4,7 +4,6 @@ import React from "react";
 import Header from '../common/templates/header';
 import SideBar from '../common/templates/sidebar';
 import Footer from '../common/templates/footer';
-import Routes from './routes';
 import Messages from '../common/msg/messages';
 
 export default function App(props) {
@@ -13,7 +12,7 @@ export default function App(props) {
       <Header />
       <SideBar/>
       <div className="content-wrapper">
-        <Routes />
+        {props.children}
       </div>
       <Footer />
       <Messages />
